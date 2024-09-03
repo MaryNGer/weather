@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h1>Weather</h1>
+        {% if last_city %}
+            <div><p>Last searched city: <a href="{{ url_for('get_weather', city=last_city) }}">{{ last_city }}</a></p></div>
+        {% else %}
+        {% endif %}
+        <form action="/weather" method="POST">
+             {{ form.hidden_tag() }}
+
+            {{ form.city.label }} {{ form.city }}
+
+            {{ form.submit() }}
+
+        </form>
+    </div>
+
+{% endblock %}

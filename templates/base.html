@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"/>
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="icon" href="../static/img/logo_cloud.svg" type="img/favicon.png">
+    <title>Weather the weather</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="conteiner">
+            <div class="logo_section flex">
+                <img src="../static/img/logo_cloud.svg" alt="logo">
+                <h1 class="logo_name">weather the weather</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="search" class="search-section">
+            <div class="conteiner">
+                <div class="search_content">
+                    <form action="#" method="POST" class="form flex">
+                        <div class="search-input">
+                            <input type="search" class="input-search" placeholder="Введите город" name="city" required>
+                            {% if link_data %}
+                            <span class="last-city"><a class="last-city-link" href="{{ link_data.href }}">{{ link_data.text }}</a></span>
+                            {% else %}
+                            {% endif %}
+                        </div>
+                        <button class="btn-reset search_btn">
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        {% block content %} {% endblock %}
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+    <script src="../static/js/script.js"></script>
+</body>
+
+</html>

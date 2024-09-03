@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="weather" class="weather-section">
+    <div class="conteiner">
+        <div class="weather-conteiner">
+            <div class="weather-content flex">
+                {% if city %}
+                <div class="weather-now flex">
+                    <h2 class="city-name">
+                        {{ city }}
+                    </h2>
+                    <h3 class="temp">
+                        {{ weather_now.Temperature }}
+                    </h3>
+                    <img src="{{ weather_now.weather_code }}" alt="Sunny">
+                </div>
+                <div class="weather-all">
+                    <ul class="weather-list list-reset" data-simplebar>
+                        {% for key, value in weather_data.items() %}
+                        <li class="weather-hour flex">
+                            <span class="descr">{{ key }}</span>
+                            <img src="{{ value.weather_code }}" alt="Sunny">
+                            <span class="descr temp-hour">{{ value.Temperature }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% else %}
+                <h2> Sorry, no this city.</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
